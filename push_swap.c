@@ -64,40 +64,46 @@ void    check_num(char **arr)
     }
 }
 
-void double_check(char **arr)// повторяемость цифр
+void double_check(char **arr)// повторяемость чисел
 {
     int i;
     int j;
+    int num_1;
+    int num_2;
 
     i = 0;
-    j = 0;
     while (arr[i] != '\0')
     {
-        while (arr[i][j] != '\0')
+        num_1 = ft_atoi(arr[i]);
+        j = i + 1;
+        while (arr[j] != '\0')
         {
-            if (arr[i][j])
+            num_2 = ft_atoi(arr[j]);
+            if (num_1 == num_2)
+                free_arr(arr, 1);
             j++;
         }
-        
         i++;
     }
-    
-
 }
 
 t_num *ft_parser(char **argv)
 {
     char    **arr;
     int     i;
+    t_array a;   
 
     arr = get_line(argv);
     check_num(arr);
     double_check(arr);
+    while (arr[i] != '\0')
+        i++;
+        
 }
 /*
 int main(int argc, char **argv)
 {
-    t_num   *all;
+    t_array   *a;
 
     if (argc > 1)
     {
