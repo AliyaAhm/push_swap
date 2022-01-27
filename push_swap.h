@@ -9,5 +9,6 @@
 # include <sys/errno.h>
 
 char **get_line(char **argv)
+t_num *ft_parser(char **argv)
 
 #endif
