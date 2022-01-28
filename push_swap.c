@@ -87,18 +87,105 @@ void double_check(char **arr)// повторяемость чисел
     }
 }
 
+t_node	*new_list(int num, int index)
+{
+	t_node	*list;
+
+	list = malloc(sizeof(t_node));
+	if (list == NULL)
+		return (NULL);
+	list->num = num;
+	list->flag = 0;
+	list->index = index;
+	list->next = NULL;
+	list->prev = NULL;
+	return (list);
+}
+
+void stack_add(t_array *all, char **arr)
+{
+    int     *not_sort;
+    int     *sort;
+    int     len;
+    int     i;
+    int     j;
+    int     tmp;
+    int     count;
+
+    len = 0;
+    while (arr[len] != '\0')
+    {
+            len++;
+    }
+    not_sort = malloc(sizeof(int) * (len));//выделение памяти под массив
+    i = 0;
+    while (i < len)//перевод символолв в инты и внесение их в массив
+    {
+        not_sort[i] = ft_atoi(arr[i]);
+        sort[i] = not_sort[i];
+        i++;
+    }
+    i = 0;//сортировка пузырьком
+    count = 0;
+    while (i < len)// 3 2 5 0 4 // 2 3 5 0 4 // 23054//23045//20345 // 02345
+    {
+        j = 0;
+        while (j < (len - 1 - i)) //0<4//1<4//2<4//3<4 // 0<3//1<3//2<3 // 0<2 // 1 < 2
+        {
+            if (sort[j] > sort[j + 1]) //3>2//2>5//5>0//5>4 // 2>3//3>0//3>4 // 2>0//2>3
+            {
+                tmp = sort[j + 1]; 
+                sort[j + 1] = sort[j]; 
+                sort[j] = tmp;
+            }
+            j++;//1//2//3//4 // 1//2//3 // 1
+        }
+        i++; //1//2
+    }
+    i = 0;
+    while (i < len)//прописаться с повторением его индекса//добавить аргументы в стэк (min_a = 1)
+    {
+        j = 0;
+        while (j < len)
+        {
+            if (not_sort[i] == sort[j])
+            {
+                all->stack_a;
+                ft_lstadd_back(&all->stack_a, new_list(not_sort[i], j + 1)) // добавить новый элемент в конец списка
+                new_list(not_sort[i], j + 1);
+                j++;
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+    free(not_sort);
+    free(sort);
+}
+
 t_num *ft_parser(char **argv)
 {
     char    **arr;
     int     i;
-    t_array a;   
+    t_array *all;   
 
     arr = get_line(argv);
     check_num(arr);
     double_check(arr);
+    i = 0;
     while (arr[i] != '\0')
         i++;
-        
+    all = malloc(sizeof(T_array));
+    if (!all)
+        return (NULL);
+    all->stack_a = NULL;
+    all->stack_b = NULL;
+    all->len_a = i;
+    all->len_b = 0;
+    all->min_a = 1;
+    stack_add(all, arr);
+    return (all);
 }
 /*
 int main(int argc, char **argv)
