@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "lldb Запустить",
             "program": "${workspaceFolder}/push_swap",
-            "args": ["7", "5", "3", "6"],
+            "args": ["1", "2", "5", "6", "8", "9", "15", "25", "54", "35", "65254"],
             "cwd": "${workspaceFolder}"
         }
     ]

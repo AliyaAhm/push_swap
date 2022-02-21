@@ -354,17 +354,19 @@ void    set_groups(t_lst *lst, int num)//установка флагов -1 в �
 
 void    swap_lst(t_lst **begin, t_lst **end_a)//поменять местами первые два элемента
 {
-    t_lst *begin_tmp;
-    t_lst *prev_tmp;
+    t_lst *tmp_1;
+    t_lst *tmp_2;
+    t_lst *tmp_3;
 
     if (*begin == NULL && *end_a == NULL)
         return;
-    begin_tmp = *begin;
-    prev_tmp = (*begin)->next;
-    *begin = (*begin)->next;//положили в первый элемент второй
-    (*begin)->next = begin_tmp;//дали ссылку на первый элемент
-    begin_tmp->next = prev_tmp->next;//в первого элемента положили ссылку на третий
-    (*end_a)->next = *begin;//положили в последний элемент ссылку на второй элемент
+    tmp_2 = (*begin)->next;
+    tmp_3 = tmp_2->next;
+    tmp_1 = *begin;
+    *begin = (*begin)->next;
+    (*begin)->next = tmp_1;
+    (*begin)->next->next = tmp_3;
+    (*end_a)->next = *begin;
     return;
 }
 
@@ -377,15 +379,27 @@ void	forw_rot(t_lst **begin, t_lst **end_a)
 	return ;
 }
 
-void	revs_rot(t_lst **begin, t_lst **end_a)//спустить число вниз стека
+void	revs_rot(t_lst **begin, t_lst **end_a)//поднять последний элемент вверх стека
 {
-    t_lst   *tmp;
+    //t_lst   *tmp;
+    t_lst   *ptr;
+    //t_lst   *start;
 
     if (*begin == NULL && *end_a == NULL)
 		return ;
-    tmp = (*begin)->next;
-    *end_a = *begin;
-    *begin = tmp;
+    //tmp = *end_a;
+    *begin = *end_a;
+    ptr = (*end_a)->next;
+    while (ptr)
+	{
+		if (ptr->next == (*end_a))
+        {
+			(*end_a) = ptr;
+            ptr = NULL;
+        }
+        else 
+            ptr = ptr->next;
+	}
     return ;
 }
 
@@ -417,7 +431,7 @@ void    ra(t_strct *swap_strct)//сдвинуть вверх все элемен
 {
     forw_rot(&(swap_strct->begin_stack_a), &(swap_strct->end_stack_a));
     swap_strct->oper_cnt++;
-    write(1, "sa\n", 3);
+    write(1, "ra\n", 3);
     return;
 }
 
@@ -447,6 +461,7 @@ void	rrb(t_strct *swap_strct)
 {
 	revs_rot(&(swap_strct->begin_stack_b), &(swap_strct->end_stack_b));
 	swap_strct->oper_cnt++;
+    write(1, "rrb\n", 4);
 	return ;
 }
 
@@ -474,7 +489,7 @@ void    move_lst(t_lst  **begin_stack_a, t_lst  **end_stack_a,
     if (*begin_stack_a == *begin_stack_b)
     {
         *begin_stack_a = NULL;
-        *begin_stack_b = NULL;
+        *end_stack_a = NULL;
     }
     if (!*end_stack_b)
         *end_stack_b = *begin_stack_b;
@@ -674,7 +689,7 @@ int     sort_ab(t_strct *swap_strct, int d_group)
     while (s_len--)
     {
         i = swap_strct->begin_stack_a->index;
-        if (i < key)//если индекс меньше середины
+        if (i <= key)//если индекс меньше середины
             pb(swap_strct);//перекидываем в стек б
         else 
             ra(swap_strct);//просто переворачиваем стек
