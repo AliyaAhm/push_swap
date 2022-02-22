@@ -74,6 +74,7 @@ void	swapb_3_l(t_strct *swap_strct, int c);
 int     check3a_h(t_strct *swap_strct);
 void    move_sort(t_strct *swap_strct);
 void	stack_clear(t_lst *lst);
+int     stacka_is_sorted(t_strct *swap_strct);
 /***/
 
 void    free_arr(char **arr, int flag);

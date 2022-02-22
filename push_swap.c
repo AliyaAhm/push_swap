@@ -363,10 +363,16 @@ void    swap_lst(t_lst **begin, t_lst **end_a)//поменять местами 
     tmp_2 = (*begin)->next;
     tmp_3 = tmp_2->next;
     tmp_1 = *begin;
+    if (tmp_2 == (*end_a))
+        {
+            *begin = (*begin)->next;
+            *end_a = tmp_1;
+            return ;
+        }
     *begin = (*begin)->next;
+    (*end_a)->next = *begin;
     (*begin)->next = tmp_1;
     (*begin)->next->next = tmp_3;
-    (*end_a)->next = *begin;
     return;
 }
 
@@ -439,6 +445,7 @@ void	rra(t_strct *swap_strct)
 {
 	revs_rot(&(swap_strct->begin_stack_a), &(swap_strct->end_stack_a));
 	swap_strct->oper_cnt++;
+    write(1, "rra\n", 4);
 	return ;
 }
 
@@ -554,22 +561,26 @@ int     check3a_l(t_strct *swap_strct)
 	return (1);
 }
 
-void    move_sort(t_strct *swap_strct)
+int stacka_is_sorted(t_strct *swap_strct)
 {
-    t_lst *tmp;
     int len;
-    int flag;
+    t_lst *tmp;
 
-    flag = 1;
     tmp = swap_strct->begin_stack_a;
     len = swap_strct->num_a;
     while(len)
     {
-        if (tmp->group != -1)
-            flag = 0;
         len--;
+        if (tmp->group != -1)
+            return (0);
+        tmp = tmp->next;
     }
-    if (flag == 0 && swap_strct->num_a > 3)
+    return (1);
+}
+
+void    move_sort(t_strct *swap_strct)
+{
+    if (!stacka_is_sorted(swap_strct) && swap_strct->num_a > 3)
     {
         while (swap_strct->begin_stack_a->index == swap_strct->nextpoint)
         {
@@ -705,8 +716,8 @@ void    step_exec(t_strct *swap_strct)
     step = swap_strct->num_a - step;
     while (step)
     {
-        rra(swap_strct);
         step--;
+        rra(swap_strct);
     }
     return ;
 }
