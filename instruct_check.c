@@ -8,21 +8,21 @@ int	check3a_l(t_strct *swap_strct)
 	abc[1] = swap_strct->begin_stack_a->next->value;
 	abc[2] = swap_strct->begin_stack_a->next->next->value;
 	if (abc[0] > abc[1] && abc[0] < abc[2])
-		sa(swap_strct);
+		sa(swap_strct, 1);
 	else if (abc[1] < abc[0] && abc[1] > abc[2])
 	{
-		sa(swap_strct);
-		rra(swap_strct);
+		sa(swap_strct, 1);
+		rra(swap_strct, 1);
 	}
 	else if (abc[2] < abc[0] && abc[2] > abc[1])
-		ra(swap_strct);
+		ra(swap_strct, 1);
 	else if (abc[2] > abc[0] && abc[2] < abc[1])
 	{
-		sa(swap_strct);
-		ra(swap_strct);
+		sa(swap_strct, 1);
+		ra(swap_strct, 1);
 	}
 	else if (abc[0] < abc[1] && abc[0] > abc[2])
-		rra(swap_strct);
+		rra(swap_strct, 1);
 	return (1);
 }
 
@@ -57,7 +57,7 @@ int	check_a_stack_hard(t_strct *swap_strct, int d_group)
 		{
 			if (swap_strct->begin_stack_a->value > \
 			swap_strct->begin_stack_a->next->value)
-				sa(swap_strct);
+				sa(swap_strct, 1);
 		}
 		else if (d_group == 3)
 			check3a_h(swap_strct);
@@ -80,7 +80,7 @@ int	check_a_stack(t_strct *swap_strct)
 		{
 			if (swap_strct->begin_stack_a->value > \
 			swap_strct->begin_stack_a->next->value)
-				sa(swap_strct);
+				sa(swap_strct, 1);
 		}
 		else if (swap_strct->num_a == 3)
 			check3a_l(swap_strct);

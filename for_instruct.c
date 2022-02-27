@@ -80,10 +80,12 @@ void	move_lst(t_lst **begin_stack_a, t_lst **end_stack_a,
 	return ;
 }
 
-void	rrr(t_strct *swap_strct)
+void	rrr(t_strct *swap_strct, int flag)
 {
 	revs_rot(&(swap_strct->begin_stack_a), &(swap_strct->end_stack_a));
 	revs_rot(&(swap_strct->begin_stack_b), &(swap_strct->end_stack_b));
 	swap_strct->oper_cnt = swap_strct->oper_cnt + 2;
+	while (flag == 1)
+		write(1, "rrr\n", 4);
 	return ;
 }

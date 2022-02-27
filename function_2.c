@@ -40,29 +40,29 @@ int	read_arr(int argc, char **argv, t_strct *swap_strct)
 	return (1);
 }
 
-int	check_seq(t_lst *stack_a)
+int	check_seq(t_lst *stack)
 {
 	t_lst	*pointer;
 	t_lst	*start;
 	int		prev_val;
 	int		curr_val;
 
-	if (!stack_a)
+	if (!stack)
 		return (0);
-	pointer = stack_a;
-	start = stack_a;
-	prev_val = (stack_a)->value;
+	pointer = stack;
+	start = stack;
+	prev_val = (stack)->value;
 	while (pointer)
 	{
 		if (pointer->next != start)
 			pointer = pointer->next;
 		else
 			pointer = NULL;
-		curr_val = (stack_a)->value;
+		curr_val = (stack)->value;
 		if (curr_val < prev_val)
 			return (1);
 		prev_val = curr_val;
-		stack_a = pointer;
+		stack = pointer;
 	}
 	return (0);
 }
@@ -76,7 +76,7 @@ void	step_exec(t_strct *swap_strct)
 	while (step)
 	{
 		step--;
-		rra(swap_strct);
+		rra(swap_strct, 1);
 	}
 	return ;
 }

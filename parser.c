@@ -72,7 +72,10 @@ int	ft_proc_seq(t_strct *swap_strct, t_lst **lst, char *str_ar)
 	new_node = NULL;
 	new_node = init_new_lst(value);
 	if (*lst)
+	{
 		(*lst)->next = new_node;
+		*lst = new_node;
+	}
 	else
 	{
 		*lst = new_node;

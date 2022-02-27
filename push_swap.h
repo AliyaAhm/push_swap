@@ -6,16 +6,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
-
 typedef struct s_lst
 {
-	int	index;
-	int	flag;
-	int	value;
-	int	group;
 	struct s_lst	*next;
+	int				index;
+	int				flag;
+	int				value;
+	int				group;
 }	t_lst;
 
 typedef struct s_strct
@@ -84,23 +81,23 @@ void	free_arr(char **arr, int flag);
 /***/
 
 /*instruct_s_p.c*/
-void	sa(t_strct *swap_strct);
-void	sb(t_strct *swap_strct);
-void	ss(t_strct *swap_strct);
-void	pa(t_strct *swap_strct);
-void	pb(t_strct *swap_strct);
+void	sa(t_strct *swap_strct, int flag);
+void	sb(t_strct *swap_strct, int flag);
+void	ss(t_strct *swap_strct, int flag);
+void	pa(t_strct *swap_strct, int flag);
+void	pb(t_strct *swap_strct, int flag);
 /***/
 
 /*instruct_r.c*/
-void	ra(t_strct *swap_strct);
-void	rra(t_strct *swap_strct);
-void	rb(t_strct *swap_strct);
-void	rrb(t_strct *swap_strct);
-void	rr(t_strct *swap_strct);
+void	ra(t_strct *swap_strct, int flag);
+void	rra(t_strct *swap_strct, int flag);
+void	rb(t_strct *swap_strct, int flag);
+void	rrb(t_strct *swap_strct, int flag);
+void	rr(t_strct *swap_strct, int flag);
 /***/
 
 /*for_instruct.c*/
-void	rrr(t_strct *swap_strct);
+void	rrr(t_strct *swap_strct, int flag);
 void	swap_lst(t_lst **begin, t_lst **end_of);
 void	forw_rot(t_lst **begin, t_lst **end_a);
 void	revs_rot(t_lst **begin, t_lst **end_a);
@@ -118,9 +115,14 @@ void	stack_proc_btoa(t_strct *swap_strct);
 /*function_2.c*/
 void	step_exec(t_strct *swap_strct);
 int		read_arr(int argc, char **argv, t_strct *swap_strct);
-int		check_seq(t_lst *stack_a);
+int		check_seq(t_lst *stack);
 void	double_check(char **arr);
 void	free_arr(char **arr, int flag);
+/***/
+/*cheker.c*/
+int		read_arr_1(int argc, char **argv, t_strct *swap_strct);
+int		ft_checker(t_strct *swap_strct);
+int		checkin(t_strct *swap_strct, char *line, int len);
 /***/
 
 #endif

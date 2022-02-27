@@ -1,3 +1,47 @@
+#NAME = push_swap
+
+#NAME = checker
+
+#SRCS = push_swap.c
+
+#SRCS_B = checker.c
+
+#HEADER = push_swap.h
+
+#OBJ = ${SRCS:%.c=%.o}
+
+#OBJ_B = ${SRCS:%.c=%.o}
+
+#LIB = libft/libft.a
+
+#CC = clang -g
+
+#FLAFS = -Wall -Wextra -Werror
+
+#RM = rm -rf
+
+#.PHONY: all clean fclean re bonus libft
+
+#all: libft ${NAME}
+
+#libft: 
+#	${MAKE} -C libft/
+
+#${NAME}: 	${OBJ}
+#			${CC} ${FLAGS} ${OBJ} ${LIB} -o ${NAME}
+
+#%.o : %.c ${HEADER}
+#		${CC} ${FLAGS} -c $< -o  $@
+
+#clean:
+#		${RM} ${OBJ}
+#		${MAKE} -C - libft/ clean
+
+#fclean: clean
+#		${MAKE} -C libft/ fclean
+#		${RM} ${NAME}
+	
+#re:		fclean all
 NAME		= push_swap
 
 NAME_BONUS	=	checker
@@ -10,7 +54,11 @@ SRCS		= main.c           parser.c         for_instruct.c\
 			  push_swap.c      sort.c           swap.c\
 			  function_2.c
 
-SRCS_BONUS	= 
+SRCS_BONUS	= checker.c        parser.c         for_instruct.c\
+			  ft_process.c     function.c   	instruct_check_1.c\
+			  instruct_check.c instruct_r.c     instruct_s_p.c\
+			  push_swap.c      sort.c           swap.c\
+			  function_2.c
 
 LIBFT   	= libft.h
 
@@ -22,7 +70,7 @@ PUSH_SWAP_DIR = ./
 
 OBJ			= ${SRCS:%.c=%.o}
 
-#OBJ_BONUS	= ${SRCS_BONUS:%.c=%.o}
+OBJ_BONUS	= ${SRCS_BONUS:%.c=%.o}
 
 CC			= clang -g
 

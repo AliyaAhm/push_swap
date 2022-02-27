@@ -32,14 +32,14 @@ int	check_b_stack(t_strct *swap_strct)
 	{
 		set_groups(swap_strct->begin_stack_b, swap_strct->num_b);
 		if (swap_strct->num_b == 1)
-			pa(swap_strct);
+			pa(swap_strct, 1);
 		else if (swap_strct->num_b == 2)
 		{
 			if (swap_strct->begin_stack_b->value < \
 					swap_strct->begin_stack_b->next->value)
-				sb(swap_strct);
-			pa(swap_strct);
-			pa(swap_strct);
+				sb(swap_strct, 1);
+			pa(swap_strct, 1);
+			pa(swap_strct, 1);
 		}
 		else if (swap_strct->num_b == 3)
 			check3b_l(swap_strct);
@@ -76,14 +76,14 @@ int	back_track_b(t_strct *swap_strct)
 	if (check_stack_b_seq(swap_strct->begin_stack_b, s_len, 'd'))
 	{
 		while (s_len--)
-			pa(swap_strct);
+			pa(swap_strct, 1);
 		move_sort(swap_strct);
 	}
 	else if (check_stack_b_seq(swap_strct->begin_stack_b, s_len, 'a'))
 	{
 		while (s_len--)
 		{
-			pa(swap_strct);
+			pa(swap_strct, 1);
 			move_sort(swap_strct);
 		}
 	}

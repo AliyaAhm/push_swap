@@ -11,26 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-	char	*str;
 
-	i = 0;
-	str = (char *)s;
-	while (s[i] != 0)
-	{
-		i++;
-	}
-	return (i);
-}*/
 size_t	ft_strlen(const char *s)
 {
 	const char	*wp;
 
 	if (s == NULL)
-		return(0);
+		return (0);
 	wp = s;
 	while (*wp != '\0')
 		wp++;

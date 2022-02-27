@@ -58,7 +58,7 @@ void	btoa_proc(t_strct *swap_strct)
 		{
 			swap_strct->midpoint = swap_strct->nextpoint + d_group - 1;
 			while (d_group--)
-				pb(swap_strct);
+				pb(swap_strct, 1);
 			swap_strct->curr_group = swap_strct->begin_stack_a->group;
 			stack_proc_btoa(swap_strct);
 		}

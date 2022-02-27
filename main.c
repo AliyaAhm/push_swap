@@ -3,6 +3,7 @@
 int	main(int argc, char **argv)
 {
 	t_strct	*swap_strct;
+	t_lst	*ptr;
 
 	if (argc != 1)
 	{

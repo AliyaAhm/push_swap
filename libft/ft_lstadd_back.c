@@ -10,19 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** LIBRARY: N/A
-** SYNOPSIS: add new element at end of list
-**
-** DESCRIPTION:
-** 		Adds the element ’new’ at the end of the list.
-*/
-
 #include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	if (!new)
 		return ;

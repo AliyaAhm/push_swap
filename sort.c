@@ -26,7 +26,7 @@ void	move_sort(t_strct *swap_strct)
 		{
 			swap_strct->begin_stack_a->group = -1;
 			swap_strct->nextpoint++;
-			ra(swap_strct);
+			ra(swap_strct, 1);
 		}
 	}
 	return ;
@@ -44,9 +44,9 @@ int	sort_ab(t_strct *swap_strct, int d_group)
 	{
 		i = swap_strct->begin_stack_a->index;
 		if (i <= key)
-			pb(swap_strct);
+			pb(swap_strct, 1);
 		else
-			ra(swap_strct);
+			ra(swap_strct, 1);
 	}
 	return (0);
 }
@@ -65,9 +65,17 @@ int	sort_ba(t_strct *swap_strct)
 		i = swap_strct->begin_stack_b->index;
 		swap_strct->begin_stack_b->group = swap_strct->curr_group;
 		if (i > key)
-			pa(swap_strct);
+			pa(swap_strct, 1);
 		else
-			rb(swap_strct);
+			rb(swap_strct, 1);
 	}
 	return (0);
+}
+
+void	free_res(t_strct *swap_strct)
+{
+	stack_clear(swap_strct->begin_stack_a);
+	stack_clear(swap_strct->begin_stack_b);
+	free (swap_strct);
+	exit (1);
 }
