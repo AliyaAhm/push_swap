@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   function_2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 09:39:47 by oshelba           #+#    #+#             */
+/*   Updated: 2022/03/06 09:44:28 by oshelba          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	double_check(char **arr)
@@ -35,7 +47,6 @@ int	read_arr(int argc, char **argv, t_strct *swap_strct)
 		i++;
 		if (!ft_parser(swap_strct, argv[i], &lst))
 			return (0);
-		lst = swap_strct->end_stack_a;
 	}
 	return (1);
 }

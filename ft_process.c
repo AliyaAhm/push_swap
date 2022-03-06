@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_process.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 09:33:56 by oshelba           #+#    #+#             */
+/*   Updated: 2022/03/06 09:43:45 by oshelba          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_process(t_strct *swap_strct)
@@ -34,11 +46,11 @@ void	atob_proc(t_strct *swap_strct)
 
 	swap_strct->maxpoint = swap_strct->num_a;
 	swap_strct->midpoint = ((swap_strct->maxpoint - swap_strct->nextpoint)
-			/ 2 ) + swap_strct->nextpoint;
+			/ 2) + swap_strct->nextpoint;
 	d_group = d_check(swap_strct->begin_stack_a);
 	swap_strct->curr_group = swap_strct->begin_stack_a->group;
 	if (!check_a_stack(swap_strct) || \
-		 !check_a_stack_hard(swap_strct, d_group))
+		!check_a_stack_hard(swap_strct, d_group))
 	{
 		sort_ab(swap_strct, d_group);
 		step_exec(swap_strct);

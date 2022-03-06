@@ -1,0 +1,1 @@
+tester_0/push_test.sh ./push_swap ./checker 5 100

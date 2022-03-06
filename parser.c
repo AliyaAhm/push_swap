@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 09:35:37 by oshelba           #+#    #+#             */
+/*   Updated: 2022/03/06 09:36:06 by oshelba          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_lst	*init_new_lst(int val)
@@ -72,15 +84,10 @@ int	ft_proc_seq(t_strct *swap_strct, t_lst **lst, char *str_ar)
 	new_node = NULL;
 	new_node = init_new_lst(value);
 	if (*lst)
-	{
 		(*lst)->next = new_node;
-		*lst = new_node;
-	}
-	else
-	{
-		*lst = new_node;
+	*lst = new_node;
+	if (!swap_strct->begin_stack_a)
 		swap_strct->begin_stack_a = new_node;
-	}
 	new_node->next = swap_strct->begin_stack_a;
 	swap_strct->end_stack_a = new_node;
 	return (flag);

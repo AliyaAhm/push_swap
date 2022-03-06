@@ -1,47 +1,15 @@
-#NAME = push_swap
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/06 09:35:30 by oshelba           #+#    #+#              #
+#    Updated: 2022/03/06 09:36:06 by oshelba          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-#NAME = checker
-
-#SRCS = push_swap.c
-
-#SRCS_B = checker.c
-
-#HEADER = push_swap.h
-
-#OBJ = ${SRCS:%.c=%.o}
-
-#OBJ_B = ${SRCS:%.c=%.o}
-
-#LIB = libft/libft.a
-
-#CC = clang -g
-
-#FLAFS = -Wall -Wextra -Werror
-
-#RM = rm -rf
-
-#.PHONY: all clean fclean re bonus libft
-
-#all: libft ${NAME}
-
-#libft: 
-#	${MAKE} -C libft/
-
-#${NAME}: 	${OBJ}
-#			${CC} ${FLAGS} ${OBJ} ${LIB} -o ${NAME}
-
-#%.o : %.c ${HEADER}
-#		${CC} ${FLAGS} -c $< -o  $@
-
-#clean:
-#		${RM} ${OBJ}
-#		${MAKE} -C - libft/ clean
-
-#fclean: clean
-#		${MAKE} -C libft/ fclean
-#		${RM} ${NAME}
-	
-#re:		fclean all
 NAME		= push_swap
 
 NAME_BONUS	=	checker
