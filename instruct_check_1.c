@@ -6,7 +6,7 @@
 /*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 09:34:57 by oshelba           #+#    #+#             */
-/*   Updated: 2022/03/06 09:36:06 by oshelba          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:54:03 by oshelba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	back_track_b(t_strct *swap_strct)
 	int	s_len;
 
 	s_len = swap_strct->num_b;
-	if (check_stack_b_seq(swap_strct->begin_stack_b, s_len, 'd'))
+	if (check_stack_b_seq(swap_strct->begin_stack_b, s_len, 'd'))/*определяем значение в стеке б больше или меньше предыдущего*/
 	{
 		while (s_len--)
 			pa(swap_strct, 1);
@@ -102,7 +102,7 @@ int	back_track_b(t_strct *swap_strct)
 	return (0);
 }
 
-void	stack_proc_btoa(t_strct *swap_strct)
+void	stack_proc_btoa(t_strct *swap_strct)/*если в стеке б чисел больше 3б то перекидываем в стек а и ставим кур груп*/
 {
 	while (swap_strct->num_b > 3)
 	{

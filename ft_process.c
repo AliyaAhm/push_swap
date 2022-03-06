@@ -6,7 +6,7 @@
 /*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 09:33:56 by oshelba           #+#    #+#             */
-/*   Updated: 2022/03/06 09:43:45 by oshelba          ###   ########.fr       */
+/*   Updated: 2022/03/06 14:43:47 by oshelba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	atob_proc(t_strct *swap_strct)
 	swap_strct->maxpoint = swap_strct->num_a;
 	swap_strct->midpoint = ((swap_strct->maxpoint - swap_strct->nextpoint)
 			/ 2) + swap_strct->nextpoint;
-	d_group = d_check(swap_strct->begin_stack_a);
+	d_group = d_check(swap_strct->begin_stack_a);/*глубина группы равна количеству неотсортированных чисел*/
 	swap_strct->curr_group = swap_strct->begin_stack_a->group;
 	if (!check_a_stack(swap_strct) || \
-		!check_a_stack_hard(swap_strct, d_group))
+		!check_a_stack_hard(swap_strct, d_group))/*если меньше трех то сортируем в протслучае 0*/
 	{
-		sort_ab(swap_strct, d_group);
-		step_exec(swap_strct);
+		sort_ab(swap_strct, d_group);/*перекидываем в стек б из стека а всеб что больше или равно мидпоинта*/
+		step_exec(swap_strct);/*считаем сколько сколько с базовой группой в стеке а*/
 	}
 	check_a_stack(swap_strct);
 	stack_proc_btoa(swap_strct);
